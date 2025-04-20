@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>소방점검 체크시트</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f9f9f9;
+      margin: 0;
+    }
+    h1 {
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .link-card {
+      display: block;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+      width: 66.666%;
+      max-width: 600px;
+      box-sizing: border-box;
+      text-decoration: none;
+      color: inherit;
+    }
+    .link-card:hover {
+      transform: scale(1.02);
+    }
+    .link-card .title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #007BFF;
+    }
+    .link-card.green .title {
+      color: #2e7d32;
+    }
+    .link-card .description {
+      margin-top: 5px;
+      font-size: 16px;
+      color: #555;
+    }
+    .no-link .title {
+      color: #555;
+    }
+    .no-link {
+      cursor: default;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+      .link-card {
+        width: 100% !important;
+        max-width: none;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📋 소방점검 체크시트</h1>
+
+    <!-- 1. 소방점검 -->
+    <a href="https://knagbyeongju-123.github.io/Sobang/" target="_blank" class="link-card">
+      <div class="title">1. 소방점검</div>
+      <p class="description">소방 관련 설비 및 점검 항목 확인용</p>
+    </a>
+
+    <!-- 1-1. 소방점검이력 -->
+    <a href="https://docs.google.com/spreadsheets/d/166iYW_RVdcBFdQ_Gdjscz8999zB6KlhFHZsyATE7iks/edit?usp=drive_link" target="_blank" class="link-card green">
+      <div class="title">1-1. 소방점검이력</div>
+      <p class="description">과거 소방 점검 기록 및 결과 확인용 문서입니다.</p>
+    </a>
+
+  </div>
+</body>
+</html>
