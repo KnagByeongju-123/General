@@ -1,101 +1,217 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>소방점검 체크시트</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>(주)태진다이텍 포털 (Bright Top Nav + Hero Animation)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
+    :root {
+      --bg-main: #f5f7fa;
+      --nav-bg: #ffffff;
+      --accent: #3498db;
+      --text-dark: #333333;
+      --text-light: #ffffff;
+      --shadow: rgba(0,0,0,0.1);
+      --transition: 0.3s;
+      --nav-h: 56px;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
     body {
-      font-family: Arial, sans-serif;
-      padding: 40px;
-      background-color: #f9f9f9;
-      margin: 0;
-    }
-    h1 {
-      margin-bottom: 30px;
-      font-size: 24px;
-    }
-    .container {
       display: flex;
       flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--bg-main);
+      font-family: 'Noto Sans KR',sans-serif;
+      color: var(--text-dark);
+    }
+    header {
+      height: var(--nav-h);
+      background: var(--accent);
+      display: flex;
       align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px var(--shadow);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-light);
     }
-    .link-card {
-      display: block;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
-      width: 66.666%;
-      max-width: 600px;
-      box-sizing: border-box;
+    nav.topnav {
+      height: var(--nav-h);
+      background: var(--nav-bg);
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      white-space: nowrap;
+      box-shadow: 0 2px 4px var(--shadow);
+    }
+    nav.topnav::-webkit-scrollbar { height:6px; }
+    nav.topnav::-webkit-scrollbar-thumb {
+      background: var(--shadow);
+      border-radius:3px;
+    }
+    nav.topnav a {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 .75rem;
+      margin: 0 .25rem;
+      color: var(--text-dark);
       text-decoration: none;
-      color: inherit;
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition);
+      font-weight: 500;
     }
-    .link-card:hover {
-      transform: scale(1.02);
+    nav.topnav a i {
+      margin-right: 6px;
+      color: var(--accent);
     }
-    .link-card .title {
-      font-size: 20px;
-      font-weight: bold;
-      color: #007BFF;
+    nav.topnav a:hover {
+      background: rgba(52, 152, 219, 0.1);
+      transform: translateY(-2px);
     }
-    .link-card.green .title {
-      color: #2e7d32;
+    nav.topnav a.active {
+      background: var(--accent);
+      color: var(--text-light);
+      font-weight: 700;
     }
-    .link-card .description {
-      margin-top: 5px;
-      font-size: 16px;
-      color: #555;
+    #main {
+      flex:1;
+      position:relative;
+      background:#ffffff;
+      overflow:hidden;
     }
-    .no-link .title {
-      color: #555;
+    .loader {
+      position:absolute;
+      z-index:2;
+      width:48px; height:48px;
+      border:6px solid var(--accent);
+      border-top-color: var(--text-dark);
+      border-radius:50%;
+      animation:spin 1s linear infinite;
+      top:calc(50% - 24px);
+      left:calc(50% - 24px);
+      display:none;
     }
-    .no-link {
-      cursor: default;
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .hero {
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: linear-gradient(135deg, #e0f7fa, #fff);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
     }
-    @media (max-width: 600px) {
-      body {
-        padding: 20px;
-      }
-      .link-card {
-        width: 100% !important;
-        max-width: none;
-        padding: 15px;
-      }
+    .hero span {
+      position:absolute;
+      font-size:2.5rem;
+      font-weight:700;
+      color: var(--accent);
+      opacity:0;
+      animation:fade 9s infinite;
+    }
+    .hero span:nth-child(1) { animation-delay:0s; }
+    .hero span:nth-child(2) { animation-delay:3s; }
+    .hero span:nth-child(3) { animation-delay:6s; }
+    @keyframes fade {
+      0%   { opacity:0; transform: translateY(20px) scale(0.8); }
+      10%  { opacity:1; transform: translateY(0) scale(1); }
+      30%  { opacity:1; transform: translateY(0) scale(1); }
+      40%  { opacity:0; transform: translateY(-20px) scale(0.8); }
+      100% { opacity:0; }
+    }
+    #main iframe {
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      border:none;
+      opacity:0;
+      transition:opacity var(--transition);
+    }
+    #main iframe.visible {
+      opacity:1;
+    }
+    footer {
+      height:32px;
+      background: var(--nav-bg);
+      text-align:center;
+      line-height:32px;
+      font-size:0.8rem;
+      flex-shrink:0;
+      box-shadow: 0 -2px 4px var(--shadow);
+      color: var(--text-dark);
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>📋 소방점검 체크시트</h1>
 
-    <!-- 1. 소방점검 -->
-    <a href="https://knagbyeongju-123.github.io/Sobang/" target="_blank" class="link-card">
-      <div class="title">1. 소방점검</div>
-      <p class="description">소방 관련 설비 및 점검 항목 확인용</p>
+  <header>(주)태진다이텍 전자업무 포털</header>
+
+  <nav class="topnav">
+    <a href="https://knagbyeongju-123.github.io/procuctteam_check_all/">
+      <i class="fas fa-cogs"></i><span>생산</span>
     </a>
-
-
-    <a href="https://docs.google.com/spreadsheets/d/166iYW_RVdcBFdQ_Gdjscz8999zB6KlhFHZsyATE7iks/edit?usp=drive_link" target="_blank" class="link-card green">
-      <div class="title">1-1. 소방점검이력</div>
-      <p class="description">과거 소방 점검 기록 및 결과 확인용 문서입니다.</p>
+    <a href="https://knagbyeongju-123.github.io/QC_Checksheet_all/">
+      <i class="fas fa-clipboard-check"></i><span>품질</span>
     </a>
-
-    <a href="https://knagbyeongju-123.github.io/Print_Sobang/" target="_blank" class="link-card green">
-      <div class="title">1-2. 점검이력 엑셀다운로드</div>
-      <p class="description"></p>
+    <a href="https://knagbyeongju-123.github.io/general_team/">
+      <i class="fas fa-chart-line"></i><span>영업</span>
     </a>
-
-    <a href="https://knagbyeongju-123.github.io/electric_approval/" target="_blank" class="link-card">
-      <div class="title">2. 전자결재</div>
-      <p class="description">사내 필요시 활용가능</p>
+    <a href="https://knagbyeongju-123.github.io/General/">
+      <i class="fas fa-fire-extinguisher"></i><span>소방</span>
     </a>
+    <a href="https://knagbyeongju-123.github.io/Title_Index/">
+      <i class="fas fa-info-circle"></i><span>개요 & 팁</span>
+    </a>
+  </nav>
 
-
+  <div id="main">
+    <div class="loader" id="loader"></div>
+    <div class="hero" id="hero">
+      <span>과거는 반성을</span>
+      <span>현재는 최선을</span>
+      <span>미래는 보람을</span>
+    </div>
+    <iframe id="content-frame"></iframe>
   </div>
+
+  <footer>&copy; 2025 태진다이텍 스마트 포털</footer>
+
+  <script>
+    const links = document.querySelectorAll('nav.topnav a');
+    const hero = document.getElementById('hero');
+    const loader = document.getElementById('loader');
+    const iframe = document.getElementById('content-frame');
+
+    function showLoader(){
+      hero.style.display = 'none';
+      loader.style.display = 'block';
+      iframe.classList.remove('visible');
+    }
+    function hideLoader(){
+      loader.style.display = 'none';
+      iframe.classList.add('visible');
+    }
+
+    links.forEach(link=>{
+      link.addEventListener('click', e=>{
+        e.preventDefault();
+        links.forEach(l=>l.classList.remove('active'));
+        link.classList.add('active');
+        showLoader();
+        iframe.src = link.href;
+        iframe.onload = hideLoader;
+      });
+    });
+
+    window.addEventListener('load', ()=>{
+      // 초기에는 hero 보여주고 nav는 비활성 상태
+      hero.style.display = 'flex';
+    });
+  </script>
+
 </body>
 </html>
